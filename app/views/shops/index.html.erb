@@ -21,8 +21,10 @@
       <td><%= shop.rate %></td>
       <td><%= shop.memo %></td>
       <td><%= link_to 'Show', shop %></td>
-      <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-      <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% if user_signed_in? && shop.user_id == current_user.id then %>
+        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
+        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
