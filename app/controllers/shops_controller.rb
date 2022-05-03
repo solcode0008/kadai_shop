@@ -19,41 +19,34 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
-    # @company.users.id = current_user.id TODO ログイン機能の実装
-    @shop.user_id = 1
+    @shop.user_id = current_user.id
 
     respond_to do |format|
-      if @company.save
-        format.html { redirect_to companies_show_path, company: @company, notice: "Company was successfully created." }
-        # format.json { render :show, status: :created, location: @company }
+      if @shop.save
+        format.html { redirect_to shop_url(@shop), notice: "Shop was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        # format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
 
-#   def update
-#     respond_to do |format|
-#       if @company.update(company_params)
-#         format.html { redirect_to company_url(@company), notice: "company was successfully updated." }
-#         format.json { render :show, status: :ok, location: @company }
-#       else
-#         format.html { render :edit, status: :unprocessable_entity }
-#         format.json { render json: @company.errors, status: :unprocessable_entity }
-#       end
-#     end
-#   end
+  def update
+    respond_to do |format|
+      if @shop.update(shop_params)
+        format.html { redirect_to shop_url(@shop), notice: "shop was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
 
-#   # DELETE /companys/1 or /companys/1.json
-#   def destroy
-#     @company.destroy
+  def destroy
+    @shop.destroy
 
-#     respond_to do |format|
-#       format.html { redirect_to companies_url, notice: "company was successfully destroyed." }
-#       format.json { head :no_content }
-#     end
-#   end
+    respond_to do |format|
+      format.html { redirect_to shops_url, notice: "shop was successfully destroyed." }
+    end
+  end
 
   private
     def set_shop

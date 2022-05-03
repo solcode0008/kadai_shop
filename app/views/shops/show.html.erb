@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>名前:</strong>
+  <%= @shop.name %>
+</p>
+
+<p>
+  <strong>場所:</strong>
+  <%= @shop.address %>
+</p>
+
+<p>
+  <strong>評価:</strong>
+  <%= @shop.rate %>
+</p>
+
+<p>
+  <strong>メモ:</strong>
+  <%= @shop.memo %>
+</p>
+
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %>
