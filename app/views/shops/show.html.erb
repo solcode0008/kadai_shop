@@ -12,7 +12,18 @@
 
 <p>
   <strong>評価:</strong>
-  <%= @shop.rate %>
+  <% case @shop.rate 
+      when 1 %>
+  ★☆☆☆☆
+  <% when 2 %>
+  ★★☆☆☆
+  <% when 3 %>
+  ★★★☆☆
+  <% when 4 %>
+  ★★★★☆
+  <% when 5 %>
+  ★★★★★
+  <% end %>
 </p>
 
 <p>

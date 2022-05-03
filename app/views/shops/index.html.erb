@@ -18,7 +18,20 @@
     <tr>
       <td><%= shop.name %></td>
       <td><%= shop.address %></td>
-      <td><%= shop.rate %></td>
+      <td>
+        <% case shop.rate 
+        when 1 %>
+        ★☆☆☆☆
+        <% when 2 %>
+        ★★☆☆☆
+        <% when 3 %>
+        ★★★☆☆
+        <% when 4 %>
+        ★★★★☆
+        <% when 5 %>
+        ★★★★★
+        <% end %>
+      </td>
       <td><%= shop.memo %></td>
       <td><%= link_to 'Show', shop %></td>
       <% if user_signed_in? && shop.user_id == current_user.id then %>
